@@ -6,6 +6,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
+using PaymenTControLL.Api.Models;
+using PaymenTControLL.Api.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +28,15 @@ namespace PaymenTControLL.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // requires using Microsoft.Extensions.Options
+            services.Configure<ParcelstoreDatabaseSettings>(
+                Configuration.GetSection(nameof(ParcelstoreDatabaseSettings)));
+
+            services.AddSingleton<IParcelstoreDatabaseSettings>(sp =>
+                sp.GetRequiredService<IOptions<ParcelstoreDatabaseSettings>>().Value);
+
+            services.AddSingleton<ParcelService>();
+
             services.AddControllers();
         }
 

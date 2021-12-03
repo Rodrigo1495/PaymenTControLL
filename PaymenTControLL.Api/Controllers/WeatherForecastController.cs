@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 namespace PaymenTControLL.Api.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api")]
     public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries = new[]
         {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorchinsg"
+            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
 
         private readonly ILogger<WeatherForecastController> _logger;
@@ -24,6 +24,7 @@ namespace PaymenTControLL.Api.Controllers
         }
 
         [HttpGet]
+        [Route("forecast")]
         public IEnumerable<WeatherForecast> Get()
         {
             var rng = new Random();
