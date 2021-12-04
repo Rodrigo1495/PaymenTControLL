@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using PaymenTControLL.Api.Models;
 using PaymenTControLL.Api.Services;
 using System;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace PaymenTControLL.Api.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/parcels")]
     public class ParcelsController : ControllerBase
