@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 
 namespace PaymenTControLL.Api.Controllers
 {
-    [Authorize]
     [ApiController]
     [Route("api/parcels")]
     public class ParcelsController : ControllerBase
